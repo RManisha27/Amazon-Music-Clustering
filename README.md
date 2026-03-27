@@ -1,65 +1,163 @@
-🎵 Amazon Music Clustering Dashboard
-Project Overview
-This project provides an interactive web application built with Streamlit that performs K-Means clustering on a dataset of Amazon Music tracks. The application allows users to explore song clusters based on various audio features, visualize these clusters using Principal Component Analysis (PCA), and examine the characteristic profiles of each cluster. The application is designed to be easily runnable in a Google Colab environment and exposed via ngrok for public access.
+# 🎵 Amazon Music Clustering Dashboard
 
-Features
-Data Loading: Automatically loads single_genre_artists.csv for analysis.
-Data Preprocessing: Handles feature selection and scaling for clustering.
-Elbow Method Visualization: Displays an Elbow Method plot to help determine the optimal number of clusters (k).
-Interactive K-Means Clustering: Users can select the number of clusters (k) via a sidebar slider.
-PCA Visualization: Clusters are visualized in a 2D space using PCA, with interactive Plotly graphs for better exploration.
-Cluster Profiling: Shows the mean values of audio features for each cluster, aiding in understanding cluster characteristics.
-Export Clustered Data: Allows downloading the dataset with assigned cluster labels.
-Colab & ngrok Integration: Designed to run seamlessly in Google Colab, with public access facilitated by ngrok.
-Setup and Installation (Google Colab)
-To run this project in Google Colab, follow these steps:
+## 🚀 Live Demo
 
-Open in Colab: Open your .ipynb notebook in Google Colab.
+👉 https://amazon-music-clustering-fqjgfblzmpuqfm4nxxsteu.streamlit.app/
 
-Upload Data: Ensure single_genre_artists.csv is uploaded to your Colab environment's root directory. You can do this by clicking the folder icon on the left sidebar -> Upload button -> select single_genre_artists.csv.
+---
 
-Install Dependencies: Run the following cell in your Colab notebook to install necessary libraries:
+## 📌 Project Overview
 
-!pip install streamlit pandas numpy matplotlib seaborn scikit-learn plotly pyngrok
-Set ngrok Authtoken: ngrok requires an authentication token to create a public tunnel.
+This project is an interactive web application built using **Streamlit** that performs **K-Means clustering** on Amazon Music track data.
 
-Go to ngrok dashboard to get your authtoken.
-Run the following cell, replacing 'YOUR_AUTHTOKEN' with your actual token:
-from pyngrok import ngrok
-import os
+It allows users to explore song groupings based on audio features, visualize clusters in 2D space using **Principal Component Analysis (PCA)**, and analyze cluster characteristics in an intuitive dashboard.
 
-NGROK_AUTH_TOKEN = "YOUR_AUTHTOKEN" # Replace with your ngrok authtoken
-ngrok.set_auth_token(NGROK_AUTH_TOKEN)
-print("ngrok authtoken configured.")
-Create Streamlit App (app.py): The Streamlit application code is written to app.py. Execute the relevant cells in your Colab notebook to create and update this file with the application logic.
+---
 
-Run Streamlit App with ngrok: Execute the following cell. This will start the Streamlit application in the background and create a public ngrok URL.
+## ✨ Features
 
-import os
-from pyngrok import ngrok
+### 📊 Data Processing
 
-# Run Streamlit app in the background
-os.system("nohup streamlit run app.py &")
-# 2. Open a tunnel on port 8501 (Streamlit's default port)
-public_url = ngrok.connect(8501)
+* Loads dataset: `single_genre_artists.csv`
+* Selects key audio features like:
 
-print(f"Click the link to open your app: {public_url}")
-Usage
-After executing all the steps above, a public ngrok URL will be printed in the output of the last cell. Click on this URL to open your interactive Amazon Music Clustering Dashboard in your web browser.
+  * danceability
+  * energy
+  * tempo
+  * acousticness
+* Applies feature scaling using StandardScaler
 
-Interacting with the Dashboard:
+---
 
-Sidebar: Use the sidebar to adjust the number of clusters (k) for the K-Means algorithm.
-Data Overview: View a sample of the raw data.
-Elbow Method: Observe the Elbow Method plot to guide your choice of k.
-PCA Visualization: Explore the song clusters in a 2D PCA plot. This interactive plot allows you to zoom, pan, and hover over individual points to see details.
-Cluster Characteristics: Analyze the table showing the average feature values for each cluster to understand their unique musical profiles.
-Download Clustered Data: Download the dataset with the assigned cluster labels for further analysis.
-Example Outputs (within the app)
-Elbow Method Plot: A line plot showing SSE vs. number of clusters.
-PCA Scatter Plot: An interactive scatter plot where each point is a song, colored by its assigned cluster.
-Cluster Profile Table: A table summarizing the average values of audio features for each cluster (e.g., mean danceability, energy, loudness, etc.).
-License
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+### 📈 Elbow Method Visualization
 
-Colab
+* Displays SSE vs number of clusters
+* Helps determine optimal value of **k**
+* Interactive plot inside the app
+
+---
+
+### 🎛 Interactive Clustering
+
+* Select number of clusters using a slider
+* Real-time clustering using K-Means
+* Instant updates in results
+
+---
+
+### 🔍 PCA Visualization
+
+* Reduces high-dimensional data to 2D
+* Visualizes clusters clearly
+* Helps understand grouping patterns
+
+---
+
+### 📊 Cluster Profiling
+
+* Displays mean values of features per cluster
+* Helps interpret different types of songs
+
+---
+
+### 📥 Export Feature
+
+* Download clustered dataset as CSV
+* Useful for further analysis
+
+---
+
+## 🛠️ Tech Stack
+
+* Python
+* Streamlit
+* Pandas
+* NumPy
+* Matplotlib
+* Scikit-learn
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone Repository
+
+```bash
+git clone https://github.com/your-username/amazon-music-clustering.git
+cd amazon-music-clustering
+```
+
+### 2️⃣ Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3️⃣ Run the App Locally
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## ☁️ Deployment
+
+This project is deployed using **Streamlit Cloud**.
+
+### Steps:
+
+1. Push code to GitHub
+2. Add `requirements.txt`
+3. Deploy via Streamlit Cloud
+4. App runs automatically with a public URL
+
+---
+
+## 📁 Project Structure
+
+```
+amazon-music-clustering/
+│── app.py
+│── single_genre_artists.csv
+│── requirements.txt
+│── README.md
+```
+
+---
+
+## 📊 Output
+
+* Clustered dataset
+* Elbow method graph
+* PCA visualization
+* Cluster-wise feature summary
+
+---
+
+## 🎯 Learning Outcomes
+
+* Unsupervised Machine Learning
+* K-Means Clustering
+* Feature Scaling
+* Dimensionality Reduction (PCA)
+* Data Visualization
+* Cloud Deployment
+
+---
+
+## 📌 Future Enhancements
+
+* 🎯 Song recommendation system
+* 🎨 Improved UI design
+* 📊 Advanced interactive charts (Plotly)
+* 📁 Multiple dataset support
+
+---
+
+## 👩‍💻 Author
+
+Manisha Ravi
+
+
+Give it a ⭐ on GitHub!
